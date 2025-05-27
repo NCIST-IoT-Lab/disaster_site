@@ -1,0 +1,50 @@
+{
+    "_main_": {
+        "@var": {
+            "highLevelEventCount": "${PtrInt(0)}"
+        },
+        "events": {
+            "@for _,event in events": {
+                "x": "${event.CoordX}",
+                "y": "${event.CoordY}",
+                "z": "${event.CoordZ}",
+                "status": "${event.Status}",
+                "level": {
+                    "level": "${event.Level}",
+                    "desc": {
+                        "@if event.Level == 1": "低",
+                        "@elif event.Level == 2": "中",
+                        "@elif event.Level == 3": "高",
+                        "@else": "未知"
+                    },
+                    "@exec": {
+                        "@if event.Level == 3": "${Inc(highLevelEventCount)}"
+                    }
+                },
+                "desc": "${event.Desc}",
+                "image": {
+                    "image_type": "url",
+                    "url": "${event.Image}"
+                },
+                "user_id": "${event.UserID}",
+                "user_name": "${userIDToName[event.UserID]}",
+                "event_type": {
+                    "type": "${event.EventType}",
+                    "desc": {
+                        "@if event.EventType == 1": "人为事件",
+                        "@elif event.EventType == 2": "自然灾害",
+                        "@else": "其他事件"
+                    }
+                }
+            }
+        },
+        "summary": {
+            "total": "${len(events)}",
+            "high_level_event_count": "${highLevelEventCount}",
+            "tip": {
+                "@if highLevelEventCount > 0": "有${highLevelEventCount}个高等级事件!",
+                "@else": "请及时处理事件!"
+            }
+        }
+    }
+}
