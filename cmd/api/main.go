@@ -28,11 +28,11 @@ func main() {
 
 	// 初始化数据库
 	dbConfig := database.Config{
-		Username: utils.GetEnv("DB_USERNAME", "root"),
-		Password: utils.GetEnv("DB_PASSWORD", "password"),
-		Host:     utils.GetEnv("DB_HOST", "localhost"),
-		Port:     utils.GetEnv("DB_PORT", "3306"),
-		DBName:   utils.GetEnv("DB_NAME", "disaster_site_db"),
+		Username: utils.GetEnv("DISASTER_SITE_DB_USERNAME", "root"),
+		Password: utils.GetEnv("DISASTER_SITE_DB_PASSWORD", "password"),
+		Host:     utils.GetEnv("DISASTER_SITE_DB_HOST", "localhost"),
+		Port:     utils.GetEnv("DISASTER_SITE_DB_PORT", "3306"),
+		DBName:   utils.GetEnv("DISASTER_SITE_DB_NAME", "disaster_site_db"),
 	}
 	log.Printf("Database config: %+v", dbConfig)
 	db := database.InitDB(dbConfig)
@@ -98,7 +98,7 @@ func main() {
 	}
 
 	// 启动服务器
-	port := utils.GetEnv("SERVER_PORT", "8080")
+	port := utils.GetEnv("DISASTER_SITE_SERVER_PORT", "8080")
 	log.Printf("Server starting on port %s...", port)
 	if err := r.Run(":" + port); err != nil {
 		log.Fatalf("Failed to start server: %v", err)
