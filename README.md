@@ -65,14 +65,7 @@ cp configs/.env.example .env
 # 编辑.env文件设置您的配置
 ```
 
-3. 创建数据库
-
-```bash
-mysql -u root -p -e "CREATE DATABASE disaster_site_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
-mysql -u root -p -e "CREATE USER 'app_user'@'localhost' IDENTIFIED BY 'password'; GRANT ALL PRIVILEGES ON disaster_site_db.* TO 'app_user'@'localhost'; FLUSH PRIVILEGES;"
-```
-
-4. 运行应用
+3. 运行应用
 
 ```bash
 go run cmd/api/main.go
