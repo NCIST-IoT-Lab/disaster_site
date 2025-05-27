@@ -78,33 +78,5 @@ mysql -u root -p -e "CREATE USER 'app_user'@'localhost' IDENTIFIED BY 'password'
 go run cmd/api/main.go
 ```
 
-### 使用Docker
-
-1. 使用Docker Compose启动应用和数据库
-
-```bash
-docker-compose up -d
-```
-
-2. 停止服务
-
-```bash
-docker-compose down
-```
-
 ## API 端点
 
-- `GET /health` - 健康检查
-- `GET /api/sites` - 获取所有灾难现场
-- `GET /api/sites/:id` - 获取特定灾难现场
-- `POST /api/sites` - 创建新的灾难现场
-- `PUT /api/sites/:id` - 更新灾难现场
-- `DELETE /api/sites/:id` - 删除灾难现场
-
-## 贡献
-
-欢迎提交问题和功能请求。对于大型更改，请先开一个issue讨论您想要更改的内容。
-
-## 许可证
-
-[MIT](LICENSE)
